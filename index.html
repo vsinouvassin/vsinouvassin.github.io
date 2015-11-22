@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Coursera Developing Data Products</title>
+  <meta name="description" content="">
+  <meta name="author" content="vsinouvassin">
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <link rel="stylesheet" href="http://slidifylibraries2.googlecode.com/git/inst/libraries/frameworks/revealjs/css/reveal.min.css">
+  <link rel="stylesheet" href="http://slidifylibraries2.googlecode.com/git/inst/libraries/frameworks/revealjs/css/theme/default.css" id="theme">
+  <link rel="stylesheet" href="http://slidifylibraries2.googlecode.com/git/inst/libraries/highlighters/highlight.js/css/tomorrow.css" id="theme">
+  <!--[if lt IE 9]>
+  <script src="lib/js/html5shiv.js"></script>
+  <![endif]-->  <link rel="stylesheet" href = "assets/css/ribbons.css">
+
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section class='' data-state='' id='slide-1'>
+  <h2>Coursera Developing Data Products</h2>
+  <h3>Slidify Presentation</h3>
+
+<p>by vsinouvassin</p>
+
+</section>
+<section class='' data-state='' id='slide-2'>
+  <h3>Presentation of the application</h3>
+  <ol>
+<li><p>The application shows the evolution of the Employment rate across the different European countries between 1992 and 2014 for the age group 20-64</p></li>
+<li><p>The application allows the display of the employment rate per :</p>
+
+<ul>
+<li>country (Countries from European Union)</li>
+<li>sexe (Female, Male, Total : Female and Male)</li>
+</ul></li>
+</ol>
+
+</section>
+<section class='class' data-state='' id='id'>
+  <h3>Description of the data</h3>
+  <ol>
+<li><p>The data can be found in Eurostat (European statistics) website:
+<a href="http://ec.europa.eu/eurostat/cache/metadata/fr/t2020_10_esmsip.htm">http://ec.europa.eu/eurostat/cache/metadata/fr/t2020_10_esmsip.htm</a></p></li>
+<li><p>The data that I&#39;ve downloaded is the table called t2020_10.tsv</p></li>
+<li><p>The country codes are found in the following glossary:
+<a href="http://ec.europa.eu/eurostat/statistics-explained/index.php/Glossary:Country_codes">http://ec.europa.eu/eurostat/statistics-explained/index.php/Glossary:Country_codes</a></p></li>
+</ol>
+
+</section>
+<section class='' data-state='' id='slide-4'>
+  <h3>Homepage of the application</h3>
+  <p>Default graph shown on application:</p>
+
+<pre><code class="r">q &lt;- ggplot(data=sdata2, aes(year,value)) 
+</code></pre>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-2"> </p>
+
+</section>
+<section class='' data-state='' id='slide-5'>
+  <h3>Dynamic graphical display depending on choice</h3>
+  <ol>
+<li><p>The application gives the choice for Country and Sexe</p></li>
+<li><p>The plot display changes depending on the choice of the user :</p>
+
+<ul>
+<li>when the country is changed, the title is changed dynamically</li>
+<li>when the sexe is changed, the title and the color of the graph is changed dynamically</li>
+</ul></li>
+</ol>
+
+<p>I hope you&#39;ve appreciated my application done with European statistical data.</p>
+
+</section>
+    </div>
+  </div>
+</body>
+  <script src="http://slidifylibraries2.googlecode.com/git/inst/libraries/frameworks/revealjs/lib/js/head.min.js"></script>
+  <script src="http://slidifylibraries2.googlecode.com/git/inst/libraries/frameworks/revealjs/js/reveal.min.js"></script>
+  <script>
+  // Full list of configuration options available here:
+  // https://github.com/hakimel/reveal.js#configuration
+  Reveal.initialize({
+    controls: true,
+    progress: true,
+    history: true,
+    center: true,
+    theme: Reveal.getQueryHash().theme || 'default', 
+    transition: Reveal.getQueryHash().transition || 'default', 
+    dependencies: [
+    // Cross-browser shim that fully implements classList -
+    // https://github.com/eligrey/classList.js/
+      { src: 'http://slidifylibraries2.googlecode.com/git/inst/libraries/frameworks/revealjs/lib/js/classList.js', condition: function() { return !document.body.classList;}},
+      // Zoom in and out with Alt+click
+      { src: 'http://slidifylibraries2.googlecode.com/git/inst/libraries/frameworks/revealjs/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+      // Speaker notes
+      { src: 'http://slidifylibraries2.googlecode.com/git/inst/libraries/frameworks/revealjs/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+      // Remote control your reveal.js presentation using a touch device
+      //{ src: 'http://slidifylibraries2.googlecode.com/git/inst/libraries/frameworks/revealjs/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+      ]
+  });
+  </script>  <!-- LOAD HIGHLIGHTER JS FILES -->
+<script src="http://slidifylibraries2.googlecode.com/git/inst/libraries/highlighters/highlight.js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<!-- DONE LOADING HIGHLIGHTER JS FILES -->
+ 
+
+</html>
